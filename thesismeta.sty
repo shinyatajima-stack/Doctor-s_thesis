@@ -1,0 +1,29 @@
+% 表紙情報用のコマンド定義（本物の LaTeX でコンパイルするとき用）
+% Typst 変換時は tex2typst/build.py がこれらの値を直接読み取ります。
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{thesismeta}
+\makeatletter
+\newcommand{\entitle}[1]{\gdef\@entitle{#1}}
+\newcommand{\degree}[1]{\gdef\@degree{#1}}
+\newcommand{\university}[1]{\gdef\@university{#1}}
+\newcommand{\department}[1]{\gdef\@department{#1}}
+\newcommand{\conferral}[1]{\gdef\@conferral{#1}}
+\entitle{}\degree{}\university{}\department{}\conferral{}
+\renewcommand{\maketitle}{%
+  \begin{titlepage}
+    \centering
+    \vspace*{3cm}
+    {\LARGE\bfseries \@title\par}
+    \ifx\@entitle\@empty\else\vspace{1em}{\large \@entitle\par}\fi
+    \vspace{5cm}
+    {\Large \@author\par}
+    \vfill
+    {\Large \@degree\par}
+    \vspace{2cm}
+    {\Large \@university\par \@department\par}
+    \vspace{2cm}
+    {\Large \@conferral\par}
+    \vspace*{1cm}
+  \end{titlepage}}
+\makeatother
+\endinput

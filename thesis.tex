@@ -1,0 +1,46 @@
+% ============================================================
+%  博士論文 メインファイル
+%  - Typst で高速プレビュー:  build.bat  /  watch.bat
+%  - 本物の LaTeX で最終確認: latexmk thesis.tex（LuaLaTeX）
+% ============================================================
+\documentclass[a4paper,11pt]{ltjsreport}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{thesismeta}   % 表紙用コマンド (\degree, \department など)
+
+% ---- 自作マクロ（Typst 側でも展開されます）----
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\vect}[1]{\boldsymbol{#1}}
+\newcommand{\diff}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}}
+
+% ---- 表紙情報 ----
+\title{〇〇〇〇に関する研究}
+\entitle{A Study on XXXX}          % 副題（英題など）。不要なら行ごと消す
+\author{総研\quad 太郎}
+\degree{博士（〇〇）}
+\university{総合研究大学院大学}
+\department{先端学術院\quad 〇〇コース}
+\conferral{2027年3月}             % 学位授与年月
+
+\begin{document}
+
+\maketitle
+
+\include{chapters/abstract}
+
+\tableofcontents
+
+\include{chapters/introduction}
+\include{chapters/method}
+\include{chapters/conclusion}
+
+\bibliographystyle{unsrt}
+\bibliography{refs}
+
+\appendix
+\include{chapters/appendix}
+
+\end{document}

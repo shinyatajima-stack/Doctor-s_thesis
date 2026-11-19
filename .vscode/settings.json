@@ -1,0 +1,31 @@
+{
+  // このフォルダを開いているときだけ有効な LaTeX Workshop の設定
+  // 保存すると Typst で高速ビルド → thesis.pdf がタブ内ビューアで自動更新されます
+  "latex-workshop.latex.tools": [
+    {
+      "name": "tex2typst",
+      "command": "python",
+      "args": ["%WORKSPACE_FOLDER%/tex2typst/build.py", "%DOC_EXT%", "-o", "%DIR%/%DOCFILE%.pdf"],
+      "env": { "PYTHONIOENCODING": "utf-8" }
+    },
+    {
+      "name": "latexmk-lualatex",
+      "command": "latexmk",
+      "args": ["-lualatex", "-synctex=1", "-interaction=nonstopmode", "-file-line-error",
+               "-auxdir=%DIR%/_latex", "-outdir=%DIR%", "%DOC%"]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    { "name": "Typst（高速プレビュー）", "tools": ["tex2typst"] },
+    { "name": "LuaLaTeX（最終版）", "tools": ["latexmk-lualatex"] }
+  ],
+  "latex-workshop.latex.recipe.default": "first",
+  "latex-workshop.latex.autoBuild.run": "onSave",
+  "latex-workshop.view.pdf.viewer": "tab",
+  // Typst 版の PDF には SyncTeX 情報が無いので、ビルド後の自動ジャンプは切る
+  "latex-workshop.synctex.afterBuild.enabled": false,
+  "files.exclude": {
+    "_build": true,
+    "_latex": true
+  }
+}

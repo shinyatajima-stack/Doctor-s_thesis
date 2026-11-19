@@ -1,0 +1,43 @@
+\chapter{提案手法}\label{chap:method}
+
+\section{数式}
+
+インライン数式 $E = mc^2$ や $\vect{x} \in \R^n$ が書ける．
+別行立て数式：
+\begin{equation}
+  e^{i\pi} + 1 = 0
+  \label{eq:euler}
+\end{equation}
+複数行の数式：
+\begin{align}
+  f(x) &= \sum_{k=0}^{\infty} \frac{x^k}{k!} \label{eq:exp} \\
+  \diff{f}{x} &= f(x)
+\end{align}
+番号なし：
+\[
+  \int_0^1 x^2 \, \mathrm{d}x = \frac{1}{3}
+\]
+式\eqref{eq:exp}は指数関数である．
+
+\section{図と表}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.5\linewidth]{figures/sample.png}
+  \caption{サンプル図}
+  \label{fig:sample}
+\end{figure}
+
+\begin{table}[htbp]
+  \centering
+  \caption{実験結果}
+  \label{tab:result}
+  \begin{tabular}{lcc}
+    \toprule
+    手法 & 精度 & 時間 [s] \\
+    \midrule
+    従来手法 & 0.85 & 12.3 \\
+    提案手法 & \textbf{0.92} & 8.1 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
